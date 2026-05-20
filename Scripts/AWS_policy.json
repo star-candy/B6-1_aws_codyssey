@@ -1,0 +1,73 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {// Resorce에 대해 Action을 Effect한다.
+        //vpc, 서브넷, 인터넷 게이트웨이, 라우팅테이블 설정 위한 권한
+            "Sid": "VPCAndNetworkPermissions", //규칙 이름
+            "Effect": "Allow", //Action을 허용 혹은 거부함
+            "Action": [ //허용 혹은 금지될 행위
+                "ec2:CreateVpc",
+                "ec2:DescribeVpcs",
+                "ec2:DeleteVpc",
+                "ec2:ModifyVpcAttribute",
+                "ec2:CreateSubnet",
+                "ec2:DescribeSubnets",
+                "ec2:DeleteSubnet",
+                "ec2:ModifySubnetAttribute",
+                "ec2:CreateInternetGateway",
+                "ec2:DescribeInternetGateways",
+                "ec2:AttachInternetGateway",
+                "ec2:DetachInternetGateway",
+                "ec2:DeleteInternetGateway",
+                "ec2:CreateRouteTable",
+                "ec2:DescribeRouteTables",
+                "ec2:CreateRoute",
+                "ec2:DeleteRoute",
+                "ec2:AssociateRouteTable",
+                "ec2:DisassociateRouteTable",
+                "ec2:DeleteRouteTable"
+            ],
+            "Resource": "*" //Action의 대상 (전체 허용 의미)
+        },
+        {//인바운드 규칙 생성 및 삭제 위한 권한
+            "Sid": "SecurityGroupPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateSecurityGroup",
+                "ec2:DescribeSecurityGroups",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:DeleteSecurityGroup"
+            ],
+            "Resource": "*"
+        },
+        { //EC2 인스턴스 사용 및 접속 키페어 구성, 퍼블릭 ip 연동등에 사용
+            "Sid": "EC2AndElasticIPPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances",
+                "ec2:DescribeInstances",
+                "ec2:TerminateInstances",
+                "ec2:CreateKeyPair",
+                "ec2:DescribeKeyPairs",
+                "ec2:DeleteKeyPair",
+                "ec2:AllocateAddress",
+                "ec2:DescribeAddresses",
+                "ec2:AssociateAddress",
+                "ec2:DisassociateAddress",
+                "ec2:ReleaseAddress"
+            ],
+            "Resource": "*"
+        },
+        { //AWS 자원 생성 시 name tag (별명) 붙일 시 사용
+            "Sid": "TaggingPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateTags",
+                "ec2:DescribeTags",
+                "ec2:DeleteTags"
+            ],
+            "Resource": "*"
+        }
+        ]
+    }
