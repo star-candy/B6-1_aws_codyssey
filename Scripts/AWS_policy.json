@@ -25,7 +25,8 @@
                 "ec2:DeleteRoute",
                 "ec2:AssociateRouteTable",
                 "ec2:DisassociateRouteTable",
-                "ec2:DeleteRouteTable"
+                "ec2:DeleteRouteTable",
+                "ec2:DescribeVolumes"
             ],
             "Resource": "*" //Action의 대상 (전체 허용 의미)
         },
