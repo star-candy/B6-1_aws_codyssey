@@ -55,7 +55,10 @@
                 "ec2:DescribeAddresses",
                 "ec2:AssociateAddress",
                 "ec2:DisassociateAddress",
-                "ec2:ReleaseAddress"
+                "ec2:ReleaseAddress",
+                "ec2:DescribeLaunchTemplates",
+                "ec2:DescribeImages",
+                "ec2:DescribeInstanceTypes"
             ],
             "Resource": "*"
         },
